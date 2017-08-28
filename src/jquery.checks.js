@@ -35,7 +35,7 @@
                     $radio.addClass(setting.class_checked);
                 }
 
-                if (this.el.attr('disabled') === 'disabled') {
+                if (this.el.attr('disabled') !== undefined) {
                     $radio.addClass(setting.class_disabled);
                 }
 
@@ -50,7 +50,7 @@
                     $checkbox.addClass(setting.class_checked);
                 }
 
-                if (this.el.attr('disabled') === 'disabled') {
+                if (this.el.attr('disabled') !== undefined) {
                     $checkbox.addClass(setting.class_disabled);
                 }
 

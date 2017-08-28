@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> Checks Demo </title>
+    <link rel="stylesheet" type="text/css" href="../skins/css/checks.css" />
+    <style type="text/css">
+        div {
+            margin: 30px;
+        }
+        label {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label>
+            <input type="radio" name="demo" />Checks
+        </label>
+        <label>
+            <input type="radio" name="demo" checked />Checked
+        </label>
+        <label>
+            <input type="radio" name="demo" disabled />Disabled
+        </label>
+        <label>
+            <input type="radio" name="demo2" checked disabled />Checked + Disabled
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" name="demo" />Checks
+        </label>
+        <label>
+            <input type="checkbox" checked />Checked
+        </label>
+        <label>
+            <input type="checkbox" disabled />Disabled
+        </label>
+        <label>
+            <input type="checkbox" checked disabled />Checked + Disabled
+        </label>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script type="text/javascript" src="../src/jquery.checks.js"></script>
+<script type="text/javascript">
+    $('input').checks();
+</script>
