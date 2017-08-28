@@ -13,20 +13,31 @@ $('input[type=radio], input[type=checkbox]').checks({
 ```
 
 ## HTML
+
 ```html
 <label>
-	<input type="radio" name="pop" value="left_bottom" checked />左下角
+	<input type="radio" name="demo" checked />Checked
 </label>
+
 <label>
-	<input type="radio" name="pop" value="right_bottom" />右下角
+	<input type="radio" name="demo" disabled />Disabled
 </label>
+
 <label>
-	<input type="radio" name="pop" value="none" />无
+	<input type="radio" name="demo" checked disabled />Checked + Disabled
 </label>
 ```
 
 ```html
 <label>
-	<input type="checkbox" name="open" />启用
+	<input type="checkbox" checked />Checked
+</label>
+
+<label>
+	<input type="checkbox" disabled />Disabled
+</label>
+
+<label>
+	<input type="checkbox" checked disabled />Checked + Disabled
 </label>
 ```
