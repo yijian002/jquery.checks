@@ -1,0 +1,15 @@
+{
+  "name": "jquery.checks",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Vic",
+  "keywords": [],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.5",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.2.0",
+    "gulp-header": "^1.0.5",
+    "gulp-uglify": "^0.3.1"
+  }
+}
