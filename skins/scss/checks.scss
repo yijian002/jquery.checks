@@ -1,0 +1,41 @@
+$img_path: '../images';
+
+// radio
+.ico-radio {
+    width: 16px;
+    height: 16px;
+    background: url(#{$img_path}ico-radio.png);
+    display: inline-block;
+    cursor: pointer;
+    background-position: 0 -16px;
+    vertical-align: -3px;
+    margin: 0 5px;
+    &.sed {
+        background-position: 0 0;
+    }
+    &.disabled {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        cursor: default;
+    }
+}
+
+// checkbox
+.ico-checkbox {
+    width: 18px;
+    height: 18px;
+    background: url(#{$img_path}ico-checkbox.png);
+    display: inline-block;
+    cursor: pointer;
+    background-position: 0 -18px;
+    vertical-align: -4px;
+    margin: 0 5px;
+    &.sed {
+        background-position: 0 0;
+    }
+    &.disabled {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        cursor: default;
+    }
+}
