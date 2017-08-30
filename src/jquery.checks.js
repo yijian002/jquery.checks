@@ -21,6 +21,7 @@
 
         var app = {
             el: null,
+            _is_label: false,
             _type: '',
             _class: '',
             getClass: function(el) {
@@ -65,47 +66,72 @@
                     this.renderCheckbox();
                 }
             },
-            bindRadio: function() {
-                var _this = this;
-                this.el.next('.' + CLASS_CHECKS).on('click', function() {
-                    if ($(this).hasClass(setting.class_disabled)) {
-                        return;
-                    }
-
-                    var $inp = $(this).prev('input'),
-                        $radios = $('.' + _this.getClass($inp));
-
-                    $radios.removeClass(setting.class_checked);
-                    $(this).addClass(setting.class_checked);
-                    $inp.trigger('click').prop('checked', true);
-                });
-            },
-            bindCheckbox: function() {
-                var _this = this;
-                this.el.next('.' + CLASS_CHECKS).on('click', function() {
-                    if ($(this).hasClass(setting.class_disabled)) {
-                        return;
-                    }
-
-                    var $inp = $(this).prev('input');
-
-                    $(this).toggleClass(setting.class_checked);
-                    $inp.trigger('click').prop('checked', $(this).hasClass(setting.class_checked));
-                });
-            },
-            bind: function() {
-                if (this._type === 'radio') {
-                    this.bindRadio();
-                } else if (this._type === 'checkbox') {
-                    this.bindCheckbox();
+            setRadio: function($it) {
+                if ($it.hasClass(setting.class_disabled)) {
+                    return;
                 }
 
-                if (this.el.parent()[0].tagName === 'LABEL') {
+                var $inp = $it.prev('input'),
+                    $radios = $('.' + this.getClass($inp));
+
+                $radios.removeClass(setting.class_checked);
+                $it.addClass(setting.class_checked);
+                $inp.triggerHandler('click');
+                $inp.prop('checked', true);
+            },
+            setCheckbox: function($it) {
+                if ($it.hasClass(setting.class_disabled)) {
+                    return;
+                }
+
+                var $inp = $it.prev('input');
+
+                $it.toggleClass(setting.class_checked);
+                $inp.triggerHandler('click');
+                $inp.prop('checked', $it.hasClass(setting.class_checked));
+            },
+            bindRadio: function() {
+                var _this = this;
+
+                if (this._is_label) {
                     this.el.parent().on('click', function(event) {
+                        _this.setRadio($(this).find('.' + CLASS_CHECKS));
                         event.stopPropagation();
                         return false;
                     });
                 }
+                else {
+                    this.el.next('.' + CLASS_CHECKS).on('click', function(event) {
+                        _this.setRadio($(this));
+                        event.stopPropagation();
+                    });
+                }
+            },
+            bindCheckbox: function() {
+                var _this = this;
+
+                if (this._is_label) {
+                    this.el.parent().on('click', function(event) {
+                        _this.setCheckbox($(this).find('.' + CLASS_CHECKS));
+                        event.stopPropagation();
+                        return false;
+                    });
+                }
+                else {
+                    this.el.next('.' + CLASS_CHECKS).on('click', function(event) {
+                        _this.setCheckbox($(this));
+                        event.stopPropagation();
+                    });
+                }
+            },
+            bind: function() {
+                this._is_label = this.el.parent()[0].tagName === 'LABEL';
+
+                if (this._type === 'radio') {
+                    this.bindRadio();
+                } else if (this._type === 'checkbox') {
+                    this.bindCheckbox();
+                }                
             },
             init: function() {
                 this._class = this.getClass(this.el);
