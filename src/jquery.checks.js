@@ -76,8 +76,9 @@
 
                 $radios.removeClass(setting.class_checked);
                 $it.addClass(setting.class_checked);
-                $inp.triggerHandler('click');
+                
                 $inp.prop('checked', true);
+                $inp.triggerHandler('click');
             },
             setCheckbox: function($it) {
                 if ($it.hasClass(setting.class_disabled)) {
@@ -85,10 +86,10 @@
                 }
 
                 var $inp = $it.prev('input');
-
                 $it.toggleClass(setting.class_checked);
-                $inp.triggerHandler('click');
+                
                 $inp.prop('checked', $it.hasClass(setting.class_checked));
+                $inp.triggerHandler('click');
             },
             bindRadio: function() {
                 var _this = this;
